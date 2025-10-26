@@ -20,12 +20,16 @@ export default function HomeScreen() {
 
     try {
       setSubmitting(true);
-      const res = await fetch('http://digpig.local:8080/display', {
+      const res = await fetch('https://digipiggy-api.oscarevertsson.com/v1/devices/3fa85f64-5717-4562-b3fc-2c963f66afa6/messages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': 'Bearer MdU76TAGLdRVbyGXVfLwwQmw8R6NUdRWX4VEuLinQXTUkNyfaXcQdNBdHNGk4QTjJc'
         },
-        body: JSON.stringify({ text: value }),
+        body: JSON.stringify({
+          id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+          msg: `You received ${value} kr`
+        })
       });
 
       if (!res.ok) {
@@ -66,7 +70,7 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText style={styles.centeredText} type="title">DigiPiggy</ThemedText>
       </ThemedView>
-      <ThemedText style={styles.centeredText}>Enter an amount and submit it to the API.</ThemedText>
+      <ThemedText style={styles.centeredText}>Enter amount to send to the PI.</ThemedText>
 
       {!!error && (
         <ThemedView pointerEvents="box-none" style={styles.errorOverlayContainer}>
@@ -98,7 +102,7 @@ export default function HomeScreen() {
           activeOpacity={0.7}
           disabled={submitting}
         >
-          <ThemedText style={styles.buttonText}>{submitting ? 'Submitting…' : 'Submit'}</ThemedText>
+          <ThemedText style={styles.buttonText}>{submitting ? 'Sending…' : 'Send'}</ThemedText>
         </TouchableOpacity>
       </ThemedView>
     </ParallaxScrollView>
@@ -115,7 +119,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   titleContainer: {
-    flexDirection: 'row',
+    height: 40,
     justifyContent: 'center',
     gap: 8,
   },
@@ -126,7 +130,7 @@ const styles = StyleSheet.create({
     gap: 30,
   },
   input: {
-    width: '100%',
+    width: '80%',
     backgroundColor: '#fff',
     borderColor: '#ccc',
     borderWidth: 1,
