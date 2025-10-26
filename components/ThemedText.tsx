@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Baloo2_700Bold',
     fontSize: 32,
     fontWeight: 'bold',
-    lineHeight: 32,
+    lineHeight: 48,
   },
   subtitle: {
     fontSize: 20,
