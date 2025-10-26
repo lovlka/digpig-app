@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "digipiggy-app",
-    "slug": "digipiggy-app",
+    "name": "Digipiggy",
+    "slug": "digipiggy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/digipiggy-icon.png",
@@ -46,7 +46,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "35247e96-33fe-46ab-a45c-0edaf05d1086"
+        "projectId": "39ed2776-5b1f-479a-9f0f-d67c7e5b8f7b"
       }
     }
   }
