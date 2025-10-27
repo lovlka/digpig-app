@@ -44,6 +44,32 @@ Sedan kan du:
 - Tryck `i` för iOS simulator (macOS)
 - Tryck `a` för Android emulator
 
+## Miljövariabler (env)
+
+Appen använder Expo Public Environment Variables för att konfigurera API:er m.m. Variabler som börjar med `EXPO_PUBLIC_` blir tillgängliga i appen via `process.env` och bundlas i klienten.
+
+- Lokal utveckling: skapa en fil `.env.local` i projektroten (den ignoreras av git).
+- Bygg/prod via EAS: sätt samma variabler i EAS Secrets eller i build profiles.
+
+Exempel på `.env.local`:
+
+```
+EXPO_PUBLIC_API_URL=https://digipiggy-api.oscarevertsson.com/v1
+EXPO_PUBLIC_API_KEY=din_lokala_nyckel
+```
+
+Dessa används i koden, t.ex. i `src/services/ApiService.ts`:
+
+```
+private baseUrl: string = process.env.EXPO_PUBLIC_API_URL || '';
+private authToken: string = process.env.EXPO_PUBLIC_API_KEY || '';
+```
+
+Tips:
+- Uppdatera `.env.local` och starta om dev-servern vid ändringar.
+- Lägg aldrig privata hemligheter utan `EXPO_PUBLIC_` i klientkoden; allt som bundlas i appen är publikt.
+- För hemliga nycklar på servern, använd backend eller serverless-funktioner.
+
 ## Mappstruktur
 
 ```
