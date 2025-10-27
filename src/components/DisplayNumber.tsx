@@ -25,14 +25,16 @@ export const DisplayNumber: React.FC<DisplayNumberProps> = ({
         {
           backgroundColor: theme.colors.sunnyGold,
           borderRadius: theme.radii.pill,
+          paddingHorizontal: fontSize,
+          paddingVertical: fontSize * 0.2,
         },
         style,
       ]}
     >
       <Text
         style={[
-          theme.typography.mono,
-          { color: theme.colors.text, fontSize },
+          theme.typography.bodyBold,
+          { color: theme.colors.text, fontSize, lineHeight: fontSize * 1.5 },
         ]}
       >
         {formatCurrency(value)}
@@ -43,8 +45,6 @@ export const DisplayNumber: React.FC<DisplayNumberProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    alignSelf: 'flex-start',
-  },
+    alignSelf: 'flex-start'
+  }
 });

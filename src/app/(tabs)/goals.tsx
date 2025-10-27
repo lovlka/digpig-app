@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../providers/ThemeProvider';
 import { Card } from '../../components/Card';
 import { EmptyState } from '../../components/EmptyState';
@@ -39,7 +40,7 @@ export default function GoalsScreen() {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.colors.ivory }]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.ivory }]}>
       <View style={styles.header}>
         <Text style={[styles.title, theme.typography.h1, { color: theme.colors.text }]}>
           Sparmål
@@ -99,7 +100,7 @@ export default function GoalsScreen() {
         }}
         contentContainerStyle={styles.list}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 

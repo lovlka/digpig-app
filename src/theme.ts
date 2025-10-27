@@ -30,7 +30,7 @@ export const theme = {
     h1: {
       fontFamily: 'Baloo2_700Bold',
       fontSize: 32,
-      lineHeight: 36,
+      lineHeight: 40,
     },
     h2: {
       fontFamily: 'Baloo2_600SemiBold',

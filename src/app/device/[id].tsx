@@ -17,6 +17,8 @@ import Animated, {
   withSpring,
   withSequence,
 } from 'react-native-reanimated';
+import uuid from 'react-native-uuid';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 import ApiService from '../../services/ApiService';
 import { useTheme } from '../../providers/ThemeProvider';
@@ -54,7 +56,7 @@ export default function DeviceDetailScreen() {
 
   const handleAdjustBalance = (id: any, delta: any, selectedGoalId?: any) => {
     adjustBalance(id, delta, selectedGoalId || undefined);
-    ApiService.devices.sendMessage(crypto.randomUUID(), `You receieved ${delta / 100} kr`);
+    ApiService.devices.sendMessage(uuid.v4(), `You receieved ${delta / 100} kr`);
   };
 
   const handleQuickAdjust = (cents: number, type: 'add' | 'remove') => {
@@ -95,7 +97,7 @@ export default function DeviceDetailScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.colors.ivory }]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.ivory }]}>
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
           <TouchableOpacity
@@ -293,7 +295,7 @@ export default function DeviceDetailScreen() {
           </View>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 }
 

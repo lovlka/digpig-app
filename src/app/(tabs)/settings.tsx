@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../providers/ThemeProvider';
 import { Card } from '../../components/Card';
 import { PiggyButton } from '../../components/PiggyButton';
@@ -37,7 +38,7 @@ export default function SettingsScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.colors.ivory }]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.ivory }]}>
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={[styles.title, theme.typography.h1, { color: theme.colors.text }]}>
           Inställningar
@@ -94,7 +95,7 @@ export default function SettingsScreen() {
           </Text>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 

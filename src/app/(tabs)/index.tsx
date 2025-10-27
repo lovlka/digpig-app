@@ -10,6 +10,7 @@ import { ProgressBar } from '../../components/ProgressBar';
 import { useStore } from '../../store';
 import { formatCurrencyShort } from '../../utils/format';
 import { MaterialIcons } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const { theme } = useTheme();
@@ -34,12 +35,11 @@ export default function HomeScreen() {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.colors.ivory }]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.ivory }]}>
       <View style={styles.header}>
         <Text style={[styles.headerTitle, theme.typography.h1, { color: theme.colors.text }]}>
           Mina grisar
         </Text>
-        <DisplayNumber value={totalBalance} size="large" />
       </View>
 
       <FlatList
@@ -66,7 +66,7 @@ export default function HomeScreen() {
                 </View>
               </View>
 
-              <DisplayNumber value={item.balance} size="medium" style={styles.balance} />
+              <DisplayNumber value={item.balance} size="small" style={styles.balance} />
 
               {nextGoal && (
                 <View style={styles.goalSection}>
@@ -94,7 +94,7 @@ export default function HomeScreen() {
       >
         <MaterialIcons name="add" size={28} color="#FFFFFF" />
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 
